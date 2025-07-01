@@ -297,7 +297,7 @@
     </style>
 </head>
 
-<body class=" text-white overflow-x-hidden">
+<body class=" text-white overflow-x-hidden p-0">
     <!-- Navigation -->
     <nav class="fixed w-full top-0 z-50 transition-all duration-300" id="navbar">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -350,7 +350,7 @@
 
     <!-- Hero Section with Sliding Images -->
     <section id="home" class="relative w-full h-screen overflow-hidden">
-        <div class="hero-slider relative w-full h-full">
+        <div class="hero-slider relative w-full h-full top-0 left-0">
             <!-- Slide 1 -->
             <div class="hero-slide absolute inset-0 opacity-100 transition-opacity duration-1000">
                 <img src="images/landing.png" alt="Luxury Living Room Design"
@@ -375,7 +375,7 @@
 
             <!-- Slide 2 -->
             <div class="hero-slide absolute inset-0 opacity-0 transition-opacity duration-1000">
-                <img src="images/port 4.jpeg" alt="Modern Kitchen Design"
+                <img src="images/landing2.avif" alt="Modern Kitchen Design"
                     class="w-full h-full object-cover">
                 <div class="absolute inset-0 hero-overlay flex items-center justify-center">
                     <div class="text-center text-white px-4">
@@ -395,7 +395,7 @@
 
             <!-- Slide 3 -->
             <div class="hero-slide absolute inset-0 opacity-0 transition-opacity duration-1000">
-                <img src="images/port 7.jpg" alt="Elegant Bedroom Design"
+                <img src="images/landing3.avif" alt="Elegant Bedroom Design"
                     class="w-full h-full object-cover">
                 <div class="absolute inset-0 hero-overlay flex items-center justify-center">
                     <div class="text-center text-white px-4">
@@ -535,7 +535,7 @@
                 <!-- Kitchen -->
                 <div class="inspiration-card animate-on-scroll">
                     <div class="h-80 bg-cover bg-center relative"
-                        style="background-image: url('/placeholder.svg?height=400&width=600');">
+                        style="background-image: url('images/kitchen.avif');">
                         <div class="inspiration-overlay"></div>
                         <div class="absolute bottom-6 left-6 z-10">
                             <span
@@ -551,7 +551,7 @@
                 <!-- Wardrobe -->
                 <div class="inspiration-card animate-on-scroll">
                     <div class="h-80 bg-cover bg-center relative"
-                        style="background-image: url('/placeholder.svg?height=400&width=600');">
+                        style="background-image: url('images/wardobe.avif');">
                         <div class="inspiration-overlay"></div>
                         <div class="absolute bottom-6 left-6 z-10">
                             <span
@@ -567,7 +567,7 @@
                 <!-- Dining Room -->
                 <div class="inspiration-card animate-on-scroll">
                     <div class="h-80 bg-cover bg-center relative"
-                        style="background-image: url('/placeholder.svg?height=400&width=600');">
+                        style="background-image: url('images/dyning.avif');">
                         <div class="inspiration-overlay"></div>
                         <div class="absolute bottom-6 left-6 z-10">
                             <span class="bg-gold text-dark-primary px-4 py-2 rounded-full text-sm font-semibold">Dining
@@ -702,8 +702,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                 <div class="animate-on-scroll">
-                    <h2 class="text-4xl sm:text-5xl font-display font-bold text-gradient mb-8">About Luxury Interior
-                    </h2>
+                    <h2 class="text-4xl sm:text-5xl font-display font-bold text-gradient mb-8">About Luxury Interior</h2>
                     <p class="text-lg text-gray-300 mb-6 leading-relaxed">
                         With over 15 years of experience in interior design, we specialize in creating beautiful,
                         functional spaces
@@ -1014,7 +1013,7 @@
                 </div>
             </div>
             <div class="border-t border-gold/20 mt-12 pt-8 text-center">
-                <p class="text-gray-300">&copy; 2024 Luxury Interior. All rights reserved. | Designed with excellence
+                <p class="text-gray-300">&copy; 2025 Luxury Interior. All rights reserved. | Designed with excellence
                     for Indian homes.</p>
             </div>
         </div>
@@ -1082,7 +1081,7 @@
 
         // Form submission
         document.querySelector('form').addEventListener('submit', function (e) {
-            e.preventDefault();
+           
             alert('Thank you for your message! We\'ll get back to you soon.');
         });
 
@@ -1134,7 +1133,7 @@
             const x = e.clientX / window.innerWidth;
             const y = e.clientY / window.innerHeight;
 
-            hero.style.transform = `translate(${x * 10}px, ${y * 10}px)`;
+            // hero.style.transform = `translate(${x * 10}px, ${y * 10}px)`;
         });
 
         // Add loading animation
