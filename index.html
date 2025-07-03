@@ -17,8 +17,7 @@
                         'dark-gray': '#554d89',          // Border, soft contrast text
                         'gold': '#d4af37',               // Premium golden
                         'gold-light': '#f4e4a6'          // Light gold highlight
-                    }
-                    ,
+                    },
                     animation: {
                         'fade-in-up': 'fadeInUp 0.8s ease-out',
                         'fade-in-left': 'fadeInLeft 0.8s ease-out',
@@ -202,7 +201,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.8), rgba(15, 15, 15, 0.8));
+            background: linear-gradient(135deg, rgba(180, 150, 40, 0.6), rgba(10, 10, 10, 0.3));
             opacity: 1;
             transition: all 0.4s ease;
             display: flex;
@@ -211,7 +210,9 @@
         }
 
         .portfolio-item:hover .portfolio-overlay {
-            opacity: 1;
+            opacity: 0;
+            background: linear-gradient(135deg, rgba(180, 150, 40, 0.6), rgba(10, 10, 10, 0.2));
+
         }
 
         .inspiration-card {
@@ -304,7 +305,7 @@
             <div class="flex justify-between items-center h-20">
                 <div class="flex-shrink-0 animate-fade-in-left">
                     <div class="text-3xl font-display font-bold text-gradient">
-                        Luxury Interior
+                        <img src="images/logoremove.png" class="w-28 h-14" alt="">
                     </div>
                 </div>
                 <div class="hidden md:block animate-fade-in-up">
@@ -353,8 +354,7 @@
         <div class="hero-slider relative w-full h-full top-0 left-0">
             <!-- Slide 1 -->
             <div class="hero-slide absolute inset-0 opacity-100 transition-opacity duration-1000">
-                <img src="images/landing.png" alt="Luxury Living Room Design"
-                    class="w-full h-full object-cover">
+                <img src="images/landing.png" alt="Luxury Living Room Design" class="w-full h-full object-cover">
                 <div class="absolute inset-0 hero-overlay flex items-center justify-center">
                     <div class="text-center text-white px-4 animate-fade-in-up">
                         <h1 class="text-5xl md:text-7xl font-display font-bold mb-6 text-gradient animate-glow">
@@ -375,8 +375,7 @@
 
             <!-- Slide 2 -->
             <div class="hero-slide absolute inset-0 opacity-0 transition-opacity duration-1000">
-                <img src="images/landing2.avif" alt="Modern Kitchen Design"
-                    class="w-full h-full object-cover">
+                <img src="images/landing2.avif" alt="Modern Kitchen Design" class="w-full h-full object-cover">
                 <div class="absolute inset-0 hero-overlay flex items-center justify-center">
                     <div class="text-center text-white px-4">
                         <h1 class="text-5xl md:text-7xl font-display font-bold mb-6 text-gradient">
@@ -385,7 +384,7 @@
                         <p class="text-xl md:text-3xl mb-8 font-light">
                             Crafting Timeless Interiors
                         </p>
-                        <a href="#portfolio"
+                        <a href="view-Portfolio.html"
                             class="btn-primary px-10 py-4 rounded-full text-lg font-semibold inline-block hover-lift">
                             View Our Work
                         </a>
@@ -395,15 +394,14 @@
 
             <!-- Slide 3 -->
             <div class="hero-slide absolute inset-0 opacity-0 transition-opacity duration-1000">
-                <img src="images/landing3.avif" alt="Elegant Bedroom Design"
-                    class="w-full h-full object-cover">
+                <img src="images/landing3.avif" alt="Elegant Bedroom Design" class="w-full h-full object-cover">
                 <div class="absolute inset-0 hero-overlay flex items-center justify-center">
                     <div class="text-center text-white px-4">
                         <h1 class="text-5xl md:text-7xl font-display font-bold mb-6 text-gradient">
                             Professional Excellence
                         </h1>
                         <p class="text-xl md:text-3xl mb-8 font-light">
-                            15+ Years of Design Expertise
+                            10+ Years of Design Expertise
                         </p>
                         <a href="#about"
                             class="btn-primary px-10 py-4 rounded-full text-lg font-semibold inline-block hover-lift">
@@ -485,7 +483,7 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Living Room -->
-                <div class="inspiration-card animate-on-scroll">
+                <div class="inspiration-card animate-on-scroll">x`x`
                     <div class="h-80 bg-cover bg-center relative"
                         style="background-image: url('https://images.livspace-cdn.com/w:700/h:394/dpr:2/plain/https://d3gq2merok8n5r.cloudfront.net/bumblebee/in/interior-designer-near-me-1668702759-oSI2D/design-stories-1668705027-Hz88h/desktop-1668705032-723a7/new-folder-1689150183-B8fsX/living-room-d-1689150613-oIGOU.jpg');">
                         <div class="inspiration-overlay"></div>
@@ -534,8 +532,7 @@
 
                 <!-- Kitchen -->
                 <div class="inspiration-card animate-on-scroll">
-                    <div class="h-80 bg-cover bg-center relative"
-                        style="background-image: url('images/kitchen.avif');">
+                    <div class="h-80 bg-cover bg-center relative" style="background-image: url('images/kitchen.avif');">
                         <div class="inspiration-overlay"></div>
                         <div class="absolute bottom-6 left-6 z-10">
                             <span
@@ -550,8 +547,7 @@
 
                 <!-- Wardrobe -->
                 <div class="inspiration-card animate-on-scroll">
-                    <div class="h-80 bg-cover bg-center relative"
-                        style="background-image: url('images/wardobe.avif');">
+                    <div class="h-80 bg-cover bg-center relative" style="background-image: url('images/wardobe.avif');">
                         <div class="inspiration-overlay"></div>
                         <div class="absolute bottom-6 left-6 z-10">
                             <span
@@ -566,8 +562,7 @@
 
                 <!-- Dining Room -->
                 <div class="inspiration-card animate-on-scroll">
-                    <div class="h-80 bg-cover bg-center relative"
-                        style="background-image: url('images/dyning.avif');">
+                    <div class="h-80 bg-cover bg-center relative" style="background-image: url('images/dyning.avif');">
                         <div class="inspiration-overlay"></div>
                         <div class="absolute bottom-6 left-6 z-10">
                             <span class="bg-gold text-dark-primary px-4 py-2 rounded-full text-sm font-semibold">Dining
@@ -596,8 +591,7 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Portfolio Item 1 -->
                 <div class="portfolio-item animate-on-scroll">
-                    <div class="h-[400px] bg-cover bg-center"
-                        style="background-image: url('/placeholder.svg?height=400&width=600');">
+                    <div class="h-[400px] bg-cover bg-center" style="background-image: url('images/livingroom.jpeg');">
                         <div class="portfolio-overlay">
                             <div class="text-center text-white">
                                 <h3 class="text-2xl font-display font-bold mb-2">Traditional Living Space</h3>
@@ -611,7 +605,7 @@
                 <!-- Portfolio Item 2 -->
                 <div class="portfolio-item animate-on-scroll">
                     <div class="h-[400px] bg-cover bg-center"
-                        style="background-image: url('/placeholder.svg?height=400&width=600');">
+                        style="background-image: url('images/kitchen\ for\ portfolio.jpeg');">
                         <div class="portfolio-overlay">
                             <div class="text-center text-white">
                                 <h3 class="text-2xl font-display font-bold mb-2">Modern Indian Kitchen</h3>
@@ -624,8 +618,7 @@
 
                 <!-- Portfolio Item 3 -->
                 <div class="portfolio-item animate-on-scroll">
-                    <div class="h-[400px] bg-cover bg-center"
-                        style="background-image: url('/placeholder.svg?height=400&width=600');">
+                    <div class="h-[400px] bg-cover bg-center" style="background-image: url('images/tv\ units.jpeg');">
                         <div class="portfolio-overlay">
                             <div class="text-center text-white">
                                 <h3 class="text-2xl font-display font-bold mb-2">Luxury Master Suite</h3>
@@ -639,7 +632,7 @@
 
             <!-- View Portfolio Button -->
             <div class="text-center mt-16 animate-on-scroll">
-                <a href="#contact"
+                <a href="view-Portfolio.html"
                     class="btn-primary px-10 py-4 rounded-full text-lg font-semibold inline-block hover-lift">
                     View Full Portfolio
                 </a>
@@ -702,7 +695,8 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                 <div class="animate-on-scroll">
-                    <h2 class="text-4xl sm:text-5xl font-display font-bold text-gradient mb-8">About Luxury Interior</h2>
+                    <h2 class="text-4xl sm:text-5xl font-display font-bold text-gradient mb-8">About Luxury Interior
+                    </h2>
                     <p class="text-lg text-gray-300 mb-6 leading-relaxed">
                         With over 15 years of experience in interior design, we specialize in creating beautiful,
                         functional spaces
@@ -721,17 +715,20 @@
                             <div class="text-gray-300">Projects Completed</div>
                         </div>
                         <div class="text-center">
-                            <div class="text-4xl font-bold text-gradient mb-2 animate-glow">15+</div>
+                            <div class="text-4xl font-bold text-gradient mb-2 animate-glow">10+</div>
                             <div class="text-gray-300">Years Experience</div>
                         </div>
                     </div>
                 </div>
                 <div class="flex justify-center animate-on-scroll">
                     <div
-                        class="w-full max-w-md h-96 bg-gradient-to-br from-dark-accent to-dark-secondary rounded-3xl shadow-2xl flex items-center justify-center relative overflow-hidden hover-lift">
-                        <div class="absolute inset-0 bg-gradient-to-br from-gold/20 to-transparent"></div>
-                        <i class="fas fa-home text-gold text-6xl animate-float relative z-10"></i>
+                        class="w-full max-w-md h-96 overflow-hidden rounded-3xl shadow-2xl flex items-center justify-center relative overflow-hidden hover-lift">
+
+                        <!-- Replace icon with image -->
+                        <img src="images/aboutsection.avif" alt="Project Preview"
+                            class="w-full h-full object-cover relative z-10 animate-float">
                     </div>
+
                 </div>
             </div>
         </div>
@@ -754,7 +751,7 @@
                             <i class="fas fa-user text-dark-primary"></i>
                         </div>
                         <div>
-                            <h4 class="font-bold text-white">Priya Sharma</h4>
+                            <h4 class="font-bold text-white">Ritesh Patra</h4>
                             <p class="text-gray-400 text-sm">Homeowner, Delhi</p>
                         </div>
                     </div>
@@ -775,7 +772,7 @@
                             <i class="fas fa-user text-dark-primary"></i>
                         </div>
                         <div>
-                            <h4 class="font-bold text-white">Rajesh Patel</h4>
+                            <h4 class="font-bold text-white">Rajesh Biswal</h4>
                             <p class="text-gray-400 text-sm">Business Owner, Mumbai</p>
                         </div>
                     </div>
@@ -796,7 +793,7 @@
                             <i class="fas fa-user text-dark-primary"></i>
                         </div>
                         <div>
-                            <h4 class="font-bold text-white">Anita Reddy</h4>
+                            <h4 class="font-bold text-white">Nitya Sahu</h4>
                             <p class="text-gray-400 text-sm">Architect, Bangalore</p>
                         </div>
                     </div>
@@ -827,42 +824,44 @@
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
                 <div class="animate-on-scroll">
                     <div class="contact-form rounded-3xl p-8">
-                        <form class="space-y-6">
+                        <form method="post" action="formsubmit.php" class="space-y-6">
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                                 <div>
                                     <label class="block text-sm font-medium text-gray-300 mb-2">First Name</label>
-                                    <input type="text" class="form-input w-full px-4 py-3 rounded-lg"
+                                    <input required name="first_name" type="text"
+                                        class="form-input w-full px-4 py-3 rounded-lg"
                                         placeholder="Enter your first name">
                                 </div>
                                 <div>
                                     <label class="block text-sm font-medium text-gray-300 mb-2">Last Name</label>
-                                    <input type="text" class="form-input w-full px-4 py-3 rounded-lg"
+                                    <input required name="last_name" type="text"
+                                        class="form-input w-full px-4 py-3 rounded-lg"
                                         placeholder="Enter your last name">
                                 </div>
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-300 mb-2">Email</label>
-                                <input type="email" class="form-input w-full px-4 py-3 rounded-lg"
+                                <input name="email" type="email" class="form-input w-full px-4 py-3 rounded-lg"
                                     placeholder="Enter your email">
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-300 mb-2">Phone</label>
-                                <input type="tel" class="form-input w-full px-4 py-3 rounded-lg"
+                                <input required name="phone" type="tel" class="form-input w-full px-4 py-3 rounded-lg"
                                     placeholder="Enter your phone number">
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-300 mb-2">Project Type</label>
-                                <select class="form-input w-full px-4 py-3 rounded-lg">
-                                    <option>Select a service</option>
-                                    <option>Complete Interior Design</option>
-                                    <option>Room Makeover</option>
-                                    <option>Custom Furniture</option>
-                                    <option>Consultation Only</option>
+                                <select name="project_type" class="form-input w-full px-4 py-3 rounded-lg">
+                                    <option class="text-black">Select a service</option>
+                                    <option class="text-black">Complete Interior Design</option>
+                                    <option class="text-black">Room Makeover</option>
+                                    <option class="text-black">Custom Furniture</option>
+                                    <option class="text-black">Consultation Only</option>
                                 </select>
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-300 mb-2">Message</label>
-                                <textarea rows="4" class="form-input w-full px-4 py-3 rounded-lg"
+                                <textarea name="message" rows="4" class="form-input w-full px-4 py-3 rounded-lg"
                                     placeholder="Tell us about your project..."></textarea>
                             </div>
                             <button type="submit"
@@ -1064,26 +1063,33 @@
         showSlide(0);
 
         // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-                // Close mobile menu if open
-                mobileMenu.classList.add('hidden');
+        document.addEventListener("DOMContentLoaded", () => {
+            const mobileMenu = document.getElementById("mobile-menu"); // ✅ Define mobileMenu
+
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    const target = document.querySelector(this.getAttribute('href'));
+
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+
+                    // ✅ Close mobile menu if open
+                    if (mobileMenu && !mobileMenu.classList.contains("hidden")) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                });
             });
         });
 
+
         // Form submission
-        document.querySelector('form').addEventListener('submit', function (e) {
-           
-            alert('Thank you for your message! We\'ll get back to you soon.');
-        });
+        document.querySelector('form').addEventListener('submit', function (e) { });
 
         // Navigation scroll effect
         window.addEventListener('scroll', function () {

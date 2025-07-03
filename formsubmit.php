@@ -21,26 +21,38 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->isSMTP();
         $mail->Host = 'smtp.gmail.com';          // SMTP server
         $mail->SMTPAuth = true;
-        $mail->Username = 'your-email@gmail.com';   // Your Gmail
-        $mail->Password = 'your-app-password';      // App Password
+        $mail->Username = 'patrasagarika654@gmail.com';   // Your Gmail
+        $mail->Password = 'yder qkfe hbng lfcj';      // App Password
         $mail->SMTPSecure = 'tls';
         $mail->Port = 587;
 
         // Sender and recipient
-        $mail->setFrom('your-email@gmail.com', 'Interior Website');
-        $mail->addAddress('your-email@gmail.com');  // You’ll receive here
+        $mail->setFrom('patrasagarika654@gmail.com', 'Interior Website');
+        $mail->addAddress('patrasagarika654@gmail.com');  // You’ll receive here
 
         // Content
         $mail->isHTML(true);
         $mail->Subject = "New Interior Project Inquiry";
         $mail->Body = "
-            <h3>New Project Inquiry</h3>
-            <p><strong>Name:</strong> $firstName $lastName</p>
-            <p><strong>Email:</strong> $email</p>
-            <p><strong>Phone:</strong> $phone</p>
-            <p><strong>Project Type:</strong> $project</p>
-            <p><strong>Message:</strong><br>$message</p>
-        ";
+    <div style='font-family: Arial, sans-serif; font-size: 16px; color: #333; line-height: 1.6; padding: 10px 0;'>
+        <h2 style='color: #D4AF37; margin-bottom: 20px;'>📩 New Project Inquiry</h2>
+        
+        <p><strong>👤 Name:</strong> {$firstName} {$lastName}</p>
+        <p><strong>📧 Email:</strong> {$email}</p>
+        <p><strong>📞 Phone:</strong> {$phone}</p>
+        <p><strong>🏗️ Project Type:</strong> {$project}</p>
+        
+        <div style='margin-top: 20px;'>
+            <p style='margin-bottom: 5px;'><strong>📝 Message:</strong></p>
+            <p style='background-color: #f9f9f9; padding: 12px; border-left: 4px solid #D4AF37;'>
+                {$message}
+            </p>
+        </div>
+        
+        <hr style='margin: 30px 0; border: none; border-top: 1px solid #ccc;' />
+        <p style='font-size: 14px; color: #999;'>This message was submitted via the KNP Developers project inquiry form.</p>
+    </div>
+";
 
         $mail->send();
         header("Location: thankyou.html");
