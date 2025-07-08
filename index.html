@@ -6,17 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Luxury Interior - Premium Interior Design Services</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="shortcut icon" href="images/logoremove.png" type="image/x-icon">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        'dark-primary': '#ffffff',     // Pure White
-                        'dark-secondary': '#f9fafb',   // Near white (very light gray)
-                        'dark-accent': '#f3f4f6',      // Off-white tone
-                        'dark-gray': '#e5e7eb',        // Light gray with white blend
-
-                        'brand-red': '#dc2626',        // Red stays same
+                        'dark-primary': '#ffffff',
+                        'dark-secondary': '#f9fafb',
+                        'dark-accent': '#f3f4f6',
+                        'dark-gray': '#e5e7eb',
+                        'brand-red': '#dc2626',
                         'brand-red-light': '#f87171',
                         'brand-red-dark': '#991b1b'
                     },
@@ -38,7 +38,644 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Inter", sans-serif;
+            background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
+            color: white;
+            line-height: 1.6;
+        }
+
+        .font-display {
+            font-family: "Playfair Display", serif;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes glow {
+            from {
+                box-shadow: 0 0 20px rgba(220, 38, 38, 0.3);
+            }
+
+            to {
+                box-shadow: 0 0 30px rgba(220, 38, 38, 0.6);
+            }
+        }
+
+        /* Utility Classes */
+        .text-gradient {
+            background: linear-gradient(135deg, #dc2626, #f87171);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Navigation */
+        #navbar {
+            background: transparent;
+            transition: all 0.3s ease;
+        }
+
+        #navbar.scrolled {
+            background: rgba(15, 15, 15, 0.9);
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 0.75rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #dc2626;
+            transform: scale(1.1);
+        }
+
+        .mobile-nav-link {
+            display: block;
+            padding: 0.5rem 0.75rem;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-nav-link:hover {
+            color: #dc2626;
+        }
+
+        /* Hero Section */
+        .hero-slider {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+        }
+
+        .hero-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .hero-slide.active {
+            opacity: 1;
+        }
+
+        .hero-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(15, 15, 15, 0.8), rgba(26, 26, 26, 0.3));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-content {
+            text-align: center;
+            padding: 0 1rem;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-family: "Playfair Display", serif;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #dc2626, #f87171);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.25rem, 3vw, 1.875rem);
+            margin-bottom: 2rem;
+            font-weight: 300;
+            animation: fadeInUp 0.8s ease-out 0.3s both;
+        }
+
+        .slide-indicators {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 0.75rem;
+            z-index: 10;
+        }
+
+        .slide-indicator {
+            width: 1rem;
+            height: 1rem;
+            border-radius: 50%;
+            background: #dc2626;
+            border: none;
+            opacity: 0.5;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .slide-indicator.active,
+        .slide-indicator:hover {
+            opacity: 1;
+        }
+
+        .floating-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 5;
+        }
+
+        .floating-circle {
+            position: absolute;
+            top: 5rem;
+            right: 5rem;
+            width: 5rem;
+            height: 5rem;
+            border: 2px solid #dc2626;
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .floating-square {
+            position: absolute;
+            bottom: 10rem;
+            left: 5rem;
+            width: 4rem;
+            height: 4rem;
+            background: #dc2626;
+            opacity: 0.2;
+            border-radius: 0.5rem;
+            transform: rotate(45deg);
+            animation: bounce 3s infinite;
+        }
+
+        /* Buttons */
+        .btn-primary {
+            background: linear-gradient(135deg, #dc2626, #f87171);
+            color: white;
+            font-weight: 600;
+            padding: 1rem 2.5rem;
+            border-radius: 9999px;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 1.125rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            animation: fadeInUp 0.8s ease-out 0.6s both;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(220, 38, 38, 0.4);
+            background: linear-gradient(135deg, #991b1b, #dc2626);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid #dc2626;
+            padding: 0.5rem 1.5rem;
+            border-radius: 9999px;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-secondary:hover {
+            background: #dc2626;
+            color: white;
+        }
+
+        /* Sections */
+        .section-dark {
+            background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
+            padding: 5rem 0;
+            position: relative;
+        }
+
+        .section-darker {
+            background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+            padding: 5rem 0;
+            position: relative;
+        }
+
+        .section-title {
+            font-size: clamp(2.5rem, 4vw, 3.5rem);
+            font-family: "Playfair Display", serif;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #dc2626, #f87171);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-subtitle {
+            font-size: 1.25rem;
+            text-align: center;
+            color: #d1d5db;
+            max-width: 48rem;
+            margin: 0 auto;
+        }
+
+        .section-description {
+            font-size: 1.125rem;
+            color: #d1d5db;
+            max-width: 80rem;
+            margin: 0 auto;
+            line-height: 1.8;
+            text-align: center;
+        }
+
+        /* Business Highlights Section */
+        .highlight-card {
+            background: linear-gradient(135deg, rgba(220, 38, 38, 0.1), rgba(248, 113, 113, 0.05));
+            border: 2px solid rgba(220, 38, 38, 0.3);
+            border-radius: 1rem;
+            padding: 1rem;
+            text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .highlight-card:hover {
+            border-color: rgba(220, 38, 38, 0.8);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(220, 38, 38, 0.2);
+        }
+
+        .highlight-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(220, 38, 38, 0.1), transparent);
+            transform: rotate(45deg);
+            transition: all 0.6s ease;
+            opacity: 0;
+        }
+
+        .highlight-card:hover::before {
+            opacity: 1;
+            animation: shimmer 1.5s ease-in-out;
+        }
+
+        @keyframes shimmer {
+            0% {
+                transform: translateX(-100%) translateY(-100%) rotate(45deg);
+            }
+
+            100% {
+                transform: translateX(100%) translateY(100%) rotate(45deg);
+            }
+        }
+
+        .highlight-icon {
+            width: 5rem;
+            height: 5rem;
+            background: linear-gradient(135deg, #dc2626, #f87171);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            animation: float 3s ease-in-out infinite;
+            position: relative;
+            z-index: 2;
+        }
+
+        .highlight-icon i {
+            color: white;
+            font-size: 2rem;
+        }
+
+        .highlight-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #dc2626;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .highlight-description {
+            color: #d1d5db;
+            font-size: 1.125rem;
+            line-height: 1.6;
+            position: relative;
+            z-index: 2;
+        }
+
+        .highlight-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #dc2626;
+            display: block;
+            margin-bottom: 0.5rem;
+            font-family: "Playfair Display", serif;
+        }
+
+        /* Contact Section Styles */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        .contact-form-container {
+            background: linear-gradient(135deg, rgba(45, 45, 45, 0.9), rgba(26, 26, 26, 0.9));
+            border: 1px solid rgba(220, 38, 38, 0.2);
+            border-radius: 1.5rem;
+            padding: 2rem;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        @media (max-width: 640px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-label {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: #d1d5db;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-input {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(220, 38, 38, 0.3);
+            color: white;
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .form-input:focus {
+            border-color: rgba(220, 38, 38, 0.8);
+            box-shadow: 0 0 20px rgba(220, 38, 38, 0.2);
+            outline: none;
+        }
+
+        .form-input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .form-input option {
+            background: #1a1a1a;
+            color: white;
+        }
+
+        .w-full {
+            width: 100%;
+        }
+
+        .map-container {
+            background: linear-gradient(135deg, rgba(45, 45, 45, 0.9), rgba(26, 26, 26, 0.9));
+            border: 1px solid rgba(220, 38, 38, 0.2);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            height: fit-content;
+        }
+
+        .map-title {
+            font-size: 1.875rem;
+            font-family: "Playfair Display", serif;
+            font-weight: 700;
+            background: linear-gradient(135deg, #dc2626, #f87171);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .map-frame {
+            width: 100%;
+            height: 300px;
+            border-radius: 1rem;
+            border: 2px solid rgba(220, 38, 38, 0.3);
+            margin-bottom: 2rem;
+        }
+
+        .contact-info-grid {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .contact-info-item {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            background: rgba(220, 38, 38, 0.1);
+            border-radius: 0.75rem;
+            border: 1px solid rgba(220, 38, 38, 0.2);
+        }
+
+        .contact-info-icon {
+            width: 2.5rem;
+            height: 2.5rem;
+            background: linear-gradient(135deg, #dc2626, #f87171);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+
+        .contact-info-icon i {
+            color: white;
+            font-size: 1rem;
+        }
+
+        .contact-info-content {
+            flex: 1;
+        }
+
+        .contact-info-label {
+            font-weight: 600;
+            color: #dc2626;
+            font-size: 0.875rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .contact-info-text {
+            color: #d1d5db;
+            font-size: 0.875rem;
+            line-height: 1.4;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1rem;
+            }
+
+            .section-dark,
+            .section-darker {
+                padding: 3rem 0;
+            }
+
+            .hero-content {
+                padding: 0 1rem;
+            }
+
+            .floating-circle,
+            .floating-square {
+                display: none;
+            }
+        }
+    </style>
 </head>
 
 <body class="text-white overflow-x-hidden">
@@ -52,6 +689,7 @@
                 <div class="hidden md:block animate-fade-in-up">
                     <div class="ml-10 flex items-baseline space-x-8">
                         <a href="#home" class="nav-link">Home</a>
+                        <a href="#highlights" class="nav-link">Why Choose Us</a>
                         <a href="#services" class="nav-link">Services</a>
                         <a href="#inspiration" class="nav-link">Inspiration</a>
                         <a href="#portfolio" class="nav-link">Portfolio</a>
@@ -70,6 +708,7 @@
         <div id="mobile-menu" class="md:hidden hidden glass-effect">
             <div class="px-2 pt-2 pb-3 space-y-1">
                 <a href="#home" class="mobile-nav-link">Home</a>
+                <a href="#highlights" class="mobile-nav-link">Why Choose Us</a>
                 <a href="#services" class="mobile-nav-link">Services</a>
                 <a href="#inspiration" class="mobile-nav-link">Inspiration</a>
                 <a href="#portfolio" class="mobile-nav-link">Portfolio</a>
@@ -85,7 +724,7 @@
             <!-- Slide 1 -->
             <div class="hero-slide active">
                 <img src="images/landing.png" alt="Luxury Living Room Design" class="w-full h-full object-cover">
-                <div class="hero-overlay ">
+                <div class="hero-overlay">
                     <div class="hero-content hidden">
                         <h1 class="hero-title">Transform Your Space</h1>
                         <p class="hero-subtitle">Premium Interior Design Services</p>
@@ -97,7 +736,7 @@
             <!-- Slide 2 -->
             <div class="hero-slide">
                 <img src="images/landing2.avif" alt="Modern Kitchen Design" class="w-full h-full object-cover">
-                <div class="hero-overlay ">
+                <div class="hero-overlay">
                     <div class="hero-content hidden">
                         <h1 class="hero-title">Indian Heritage Meets Modern Design</h1>
                         <p class="hero-subtitle">Crafting Timeless Interiors</p>
@@ -109,7 +748,7 @@
             <!-- Slide 3 -->
             <div class="hero-slide">
                 <img src="images/landing3.avif" alt="Elegant Bedroom Design" class="w-full h-full object-cover">
-                <div class="hero-overlay ">
+                <div class="hero-overlay">
                     <div class="hero-content hidden">
                         <h1 class="hero-title">Professional Excellence</h1>
                         <p class="hero-subtitle">15+ Years of Design Expertise</p>
@@ -133,15 +772,126 @@
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="section-dark">
+    <!-- Business Highlights Section -->
+    <section id="highlights" class="section-dark">
         <div class="container">
             <div class="text-center mb-16 animate-on-scroll">
-                <h2 class="section-title">PREMIUM INTERIORS ACROSS INDIA</h2>
-                <div class="about-image-container">
-                    <img src="images/about page.png" alt="Indian Interior Design" class="about-image">
+                <h2 class="section-title">🏆 Why Choose Luxury Interior?</h2>
+                <p class="section-subtitle">
+                    Experience the difference with our premium services and unmatched quality
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Customized Products -->
+                <div class="highlight-card animate-on-scroll">
+                    <div class="highlight-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3 class="highlight-title">Customized Products</h3>
+                    <p class="highlight-description">
+                        Every piece is crafted specifically for your space and style preferences. No mass production -
+                        only bespoke solutions.
+                    </p>
                 </div>
-                <p class="section-description">
+
+                <!-- Custom Furniture -->
+                <div class="highlight-card animate-on-scroll">
+                    <div class="highlight-icon">
+                        <i class="fas fa-couch"></i>
+                    </div>
+                    <h3 class="highlight-title">Custom Furniture</h3>
+                    <p class="highlight-description">
+                        Handcrafted furniture designed to perfectly fit your space and reflect your personal taste and
+                        lifestyle.
+                    </p>
+                </div>
+
+                <!-- Fast Completion -->
+                <div class="highlight-card animate-on-scroll">
+                    <div class="highlight-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3 class="highlight-title">
+                        <span class="highlight-number">45</span>
+                        Days Completion
+                    </h3>
+                    <p class="highlight-description">
+                        Complete 2BHK & 3BHK flat interior work in just 45 days with our efficient project management
+                        system.
+                    </p>
+                </div>
+
+                <!-- 12 Year Warranty -->
+                <div class="highlight-card animate-on-scroll">
+                    <div class="highlight-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="highlight-title">
+                        <span class="highlight-number">12</span>
+                        Year Warranty
+                    </h3>
+                    <p class="highlight-description">
+                        Comprehensive 12-year warranty on colors and flooring after project completion. Your investment
+                        is protected.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Additional Features Row -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+                <!-- Professional Team -->
+                <div class="highlight-card animate-on-scroll">
+                    <div class="highlight-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="highlight-title">Expert Team</h3>
+                    <p class="highlight-description">
+                        15+ years of experience with certified interior designers and skilled craftsmen.
+                    </p>
+                </div>
+
+                <!-- Quality Materials -->
+                <div class="highlight-card animate-on-scroll">
+                    <div class="highlight-icon">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <h3 class="highlight-title">Premium Materials</h3>
+                    <p class="highlight-description">
+                        Only the finest quality materials and finishes sourced from trusted suppliers.
+                    </p>
+                </div>
+
+                <!-- End-to-End Service -->
+                <div class="highlight-card animate-on-scroll">
+                    <div class="highlight-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3 class="highlight-title">Complete Solutions</h3>
+                    <p class="highlight-description">
+                        From concept to completion - we handle everything so you don't have to worry about anything.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- About Section -->
+    <section id="about" class="py-20 text-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 animate-on-scroll">
+                <h2 class="text-4xl md:text-5xl font-bold text-white mb-6 section-title">
+                    PREMIUM INTERIORS ACROSS INDIA
+                </h2>
+
+                <!-- Image with Red Glow on Hover -->
+                <div class="flex justify-center mb-8">
+                    <img src="images/about page.png" alt="Indian Interior Design"
+                        class="w-full max-w-md rounded-lg shadow-lg transition-all duration-500 hover:shadow-red-500/50 hover:scale-105" />
+                </div>
+
+                <p class="text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed text-justify">
                     Our team of expert designers specializes in blending traditional Indian elements with contemporary
                     interior styles. We bring soul and sophistication to every project—infusing vibrant culture,
                     mindful detailing, and sustainable materials to create truly timeless living spaces that feel like
@@ -151,116 +901,8 @@
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section id="services" class="section-darker">
-        <div class="container">
-            <div class="text-center mb-16 animate-on-scroll">
-                <h2 class="section-title">Our Services</h2>
-                <p class="section-subtitle">
-                    We offer comprehensive interior design services with the highest level of professionalism
-                </p>
-            </div>
-            <div class="services-grid">
-                <div class="service-card animate-on-scroll">
-                    <div class="service-icon">
-                        <i class="fas fa-palette"></i>
-                    </div>
-                    <h3 class="service-title">Complete Interior Design</h3>
-                    <p class="service-description">
-                        End-to-end interior design solutions from concept to execution, tailored to Indian aesthetics.
-                    </p>
-                </div>
-                <div class="service-card animate-on-scroll">
-                    <div class="service-icon">
-                        <i class="fas fa-couch"></i>
-                    </div>
-                    <h3 class="service-title">Custom Furniture</h3>
-                    <p class="service-description">
-                        Bespoke furniture pieces that perfectly complement your space and reflect Indian craftsmanship.
-                    </p>
-                </div>
-                <div class="service-card animate-on-scroll">
-                    <div class="service-icon">
-                        <i class="fas fa-lightbulb"></i>
-                    </div>
-                    <h3 class="service-title">Lighting Design</h3>
-                    <p class="service-description">
-                        Strategic lighting solutions that enhance ambiance and highlight architectural features.
-                    </p>
-                </div>
-                <div class="service-card animate-on-scroll">
-                    <div class="service-icon">
-                        <i class="fas fa-ruler-combined"></i>
-                    </div>
-                    <h3 class="service-title">Space Planning</h3>
-                    <p class="service-description">
-                        Optimize your space layout for maximum functionality while maintaining aesthetic appeal.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Inspiration Section -->
-    <section id="inspiration" class="section-dark">
-        <div class="container">
-            <div class="text-center mb-16 animate-on-scroll">
-                <h2 class="section-title">Inspiration for Home Interior Designs</h2>
-                <p class="section-subtitle">
-                    Give your home a new look with these interior design ideas curated for you
-                </p>
-            </div>
-            <div class="inspiration-grid">
-                <div class="inspiration-card animate-on-scroll">
-                    <img src="https://images.livspace-cdn.com/w:700/h:394/dpr:2/plain/https://d3gq2merok8n5r.cloudfront.net/bumblebee/in/interior-designer-near-me-1668702759-oSI2D/design-stories-1668705027-Hz88h/desktop-1668705032-723a7/new-folder-1689150183-B8fsX/living-room-d-1689150613-oIGOU.jpg"
-                        alt="Living Room Design">
-                    <div class="inspiration-overlay">
-                        <span class="inspiration-tag">Living Room</span>
-                    </div>
-                </div>
-
-                <div class="inspiration-card animate-on-scroll">
-                    <img src="https://images.livspace-cdn.com/w:282/h:394/dpr:2/plain/https://d3gq2merok8n5r.cloudfront.net/bumblebee/in/interior-designer-near-me-1668702759-oSI2D/design-stories-1668705027-Hz88h/desktop-1668705032-723a7/new-folder-1689150183-B8fsX/master-bedroom-d-1689150615-GAvUx.jpg"
-                        alt="Master Bedroom Design">
-                    <div class="inspiration-overlay">
-                        <span class="inspiration-tag">Master Bedroom</span>
-                    </div>
-                </div>
-
-                <div class="inspiration-card animate-on-scroll">
-                    <img src="images/kitchen.avif" alt="Kitchen Design">
-                    <div class="inspiration-overlay">
-                        <span class="inspiration-tag">Kitchen</span>
-                    </div>
-                </div>
-
-                <div class="inspiration-card animate-on-scroll">
-                    <img src="images/dyning.avif" alt="Dining Room Design">
-                    <div class="inspiration-overlay">
-                        <span class="inspiration-tag">Dining Room</span>
-                    </div>
-                </div>
-
-                <div class="inspiration-card animate-on-scroll">
-                    <img src="images/wardobe.avif" alt="Wardrobe Design">
-                    <div class="inspiration-overlay">
-                        <span class="inspiration-tag">Wardrobe</span>
-                    </div>
-                </div>
-
-                <div class="inspiration-card animate-on-scroll">
-                    <img src="https://images.livspace-cdn.com/w:282/h:394/dpr:2/plain/https://d3gq2merok8n5r.cloudfront.net/bumblebee/in/interior-designer-near-me-1668702759-oSI2D/design-stories-1668705027-Hz88h/desktop-1668705032-723a7/new-folder-1689150183-B8fsX/false-ceiling-designs-web-1694434017-5JzRp.jpg"
-                        alt="False Ceiling Design">
-                    <div class="inspiration-overlay">
-                        <span class="inspiration-tag">False Ceiling</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Portfolio Section -->
-    <section id="portfolio" class="section-darker">
+    <section id="portfolio" class="section-dark">
         <div class="container">
             <div class="text-center mb-16 animate-on-scroll">
                 <h2 class="section-title">Our Portfolio</h2>
@@ -268,38 +910,28 @@
                     Explore our recent projects showcasing the perfect blend of Indian heritage and modern design
                 </p>
             </div>
-            <div class="portfolio-grid">
-                <div class="portfolio-item animate-on-scroll">
-                    <img src="images/livingroom.jpeg" alt="Traditional Living Space">
-                    <div class="portfolio-overlay">
-                        <div class="portfolio-content">
-                            <h3 class="portfolio-title">Traditional Living Space</h3>
-                            <p class="portfolio-description">Contemporary design with Indian cultural elements</p>
-                            <button class="btn-secondary">View Details</button>
-                        </div>
-                    </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="highlight-card animate-on-scroll">
+                    <img src="badroom/BEDROOM.jpg" alt="Traditional Living Space"
+                        class="w-full h-64 object-cover rounded-lg mb-4">
+                    <h3 class="highlight-title">Traditional Living Space</h3>
+                    <p class="highlight-description">Contemporary design with Indian cultural elements</p>
+                    <a href="" class="btn-secondary mt-4">View Details</a>
                 </div>
 
-                <div class="portfolio-item animate-on-scroll">
-                    <img src="images/kitchen for portfolio.jpeg" alt="Modern Indian Kitchen">
-                    <div class="portfolio-overlay">
-                        <div class="portfolio-content">
-                            <h3 class="portfolio-title">Modern Indian Kitchen</h3>
-                            <p class="portfolio-description">Functional design with traditional aesthetics</p>
-                            <button class="btn-secondary">View Details</button>
-                        </div>
-                    </div>
+                <div class="highlight-card animate-on-scroll">
+                    <img src="images/kitchen b 2.jpg" alt="Modern Indian Kitchen"
+                        class="w-full h-64 object-cover rounded-lg mb-4">
+                    <h3 class="highlight-title">Modern Indian Kitchen</h3>
+                    <p class="highlight-description">Functional design with traditional aesthetics</p>
+                    <a href="kitchenshocase.html" class="btn-secondary mt-4">View Details</a>
                 </div>
 
-                <div class="portfolio-item animate-on-scroll">
-                    <img src="images/tv units.jpeg" alt="Luxury Master Suite">
-                    <div class="portfolio-overlay">
-                        <div class="portfolio-content">
-                            <h3 class="portfolio-title">Luxury Master Suite</h3>
-                            <p class="portfolio-description">Elegant comfort with premium finishes</p>
-                            <button class="btn-secondary">View Details</button>
-                        </div>
-                    </div>
+                <div class="highlight-card animate-on-scroll">
+                    <img src="images/tv.png" alt="Luxury Master Suite" class="w-full h-64 object-cover rounded-lg mb-4">
+                    <h3 class="highlight-title">Luxury Master Suite</h3>
+                    <p class="highlight-description">Elegant comfort with premium finishes</p>
+                    <a href="suitshocase.html" class="btn-secondary mt-4">View Details</a>
                 </div>
             </div>
             <div class="text-center mt-16 animate-on-scroll">
@@ -308,261 +940,378 @@
         </div>
     </section>
 
-    <!-- Testimonials Section -->
-    <section class="section-dark">
+    <!-- Inspiration Section -->
+    <section id="inspiration" class="section-darker">
         <div class="container">
             <div class="text-center mb-16 animate-on-scroll">
-                <h2 class="section-title">What Our Clients Say</h2>
+                <h2 class="section-title">Inspiration for Home Interior Designs</h2>
                 <p class="section-subtitle">
-                    Don't just take our word for it - hear from our satisfied clients across India
+                    Give your home a new look with these interior design ideas curated for you
                 </p>
             </div>
-            <div class="testimonials-grid">
-                <div class="testimonial-card animate-on-scroll">
-                    <div class="testimonial-header">
-                        <div class="testimonial-avatar">
-                            <i class="fas fa-user"></i>
-                        </div>
-                        <div class="testimonial-info">
-                            <h4 class="testimonial-name">Ritesh Patra</h4>
-                            <p class="testimonial-location">Homeowner, Delhi</p>
-                        </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="highlight-card animate-on-scroll">
+                    <img src="https://images.livspace-cdn.com/w:700/h:394/dpr:2/plain/https://d3gq2merok8n5r.cloudfront.net/bumblebee/in/interior-designer-near-me-1668702759-oSI2D/design-stories-1668705027-Hz88h/desktop-1668705032-723a7/new-folder-1689150183-B8fsX/living-room-d-1689150613-oIGOU.jpg"
+                        alt="Living Room Design" class="w-full h-64 object-cover rounded-lg mb-4">
+                    <h3 class="highlight-title">Living Room</h3>
+                    <p class="highlight-description">Modern living spaces with traditional Indian touches</p>
+                </div>
+
+                <div class="highlight-card animate-on-scroll">
+                    <img src="images/badroom.jpg" alt="Master Bedroom Design"
+                        class="w-full h-64 object-cover rounded-lg mb-4">
+                    <h3 class="highlight-title">Master Bedroom</h3>
+                    <p class="highlight-description">Luxurious and comfortable bedroom designs</p>
+                </div>
+
+                <div class="highlight-card animate-on-scroll">
+                    <img src="images/kitchen.avif" alt="Kitchen Design"
+                        class="w-full h-64 object-cover rounded-lg mb-4">
+                    <h3 class="highlight-title">Kitchen</h3>
+                    <p class="highlight-description">Functional and beautiful kitchen spaces</p>
+                </div>
+
+                <div class="highlight-card animate-on-scroll">
+                    <img src="images/dyining.png" alt="Dining Room Design"
+                        class="w-full h-64 object-cover rounded-lg mb-4">
+                    <h3 class="highlight-title">Dining Room</h3>
+                    <p class="highlight-description">Elegant dining spaces for family gatherings</p>
+                </div>
+
+                <div class="highlight-card animate-on-scroll">
+                    <img src="images/wardobe.avif" alt="Wardrobe Design"
+                        class="w-full h-64 object-cover rounded-lg mb-4">
+                    <h3 class="highlight-title">Wardrobe</h3>
+                    <p class="highlight-description">Custom storage solutions for every need</p>
+                </div>
+
+                <div class="highlight-card animate-on-scroll">
+                    <img src="https://images.livspace-cdn.com/w:282/h:394/dpr:2/plain/https://d3gq2merok8n5r.cloudfront.net/bumblebee/in/interior-designer-near-me-1668702759-oSI2D/design-stories-1668705027-Hz88h/desktop-1668705032-723a7/new-folder-1689150183-B8fsX/false-ceiling-designs-web-1694434017-5JzRp.jpg"
+                        alt="False Ceiling Design" class="w-full h-64 object-cover rounded-lg mb-4">
+                    <h3 class="highlight-title">False Ceiling</h3>
+                    <p class="highlight-description">Stunning ceiling designs that add character</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section-dark">
+        <div class="container">
+            <div class="text-center mb-16 animate-on-scroll">
+                <h2 class="section-title">Our Services</h2>
+                <p class="section-subtitle">
+                    We offer comprehensive interior design services with the highest level of professionalism
+                </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="highlight-card animate-on-scroll">
+                    <div class="highlight-icon">
+                        <i class="fas fa-palette"></i>
                     </div>
-                    <div class="testimonial-rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <p class="testimonial-text">
-                        "Luxury Interior transformed our home beautifully, blending modern design with traditional
-                        Indian elements. Highly professional team!"
+                    <h3 class="highlight-title">Complete Interior Design</h3>
+                    <p class="highlight-description">
+                        End-to-end interior design solutions from concept to execution, tailored to Indian aesthetics.
                     </p>
                 </div>
-                <div class="testimonial-card animate-on-scroll">
-                    <div class="testimonial-header">
-                        <div class="testimonial-avatar">
-                            <i class="fas fa-user"></i>
-                        </div>
-                        <div class="testimonial-info">
-                            <h4 class="testimonial-name">Rajesh Biswal</h4>
-                            <p class="testimonial-location">Business Owner, Mumbai</p>
-                        </div>
+                <div class="highlight-card animate-on-scroll">
+                    <div class="highlight-icon">
+                        <i class="fas fa-couch"></i>
                     </div>
-                    <div class="testimonial-rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <p class="testimonial-text">
-                        "Exceptional work quality and attention to detail. They delivered exactly what we envisioned for
-                        our office space."
+                    <h3 class="highlight-title">Custom Furniture</h3>
+                    <p class="highlight-description">
+                        Bespoke furniture pieces that perfectly complement your space and reflect Indian craftsmanship.
                     </p>
                 </div>
-                <div class="testimonial-card animate-on-scroll">
-                    <div class="testimonial-header">
-                        <div class="testimonial-avatar">
-                            <i class="fas fa-user"></i>
-                        </div>
-                        <div class="testimonial-info">
-                            <h4 class="testimonial-name">Nitya Sahu</h4>
-                            <p class="testimonial-location">Architect, Bangalore</p>
-                        </div>
+                <div class="highlight-card animate-on-scroll">
+                    <div class="highlight-icon">
+                        <i class="fas fa-lightbulb"></i>
                     </div>
-                    <div class="testimonial-rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
+                    <h3 class="highlight-title">Lighting Design</h3>
+                    <p class="highlight-description">
+                        Strategic lighting solutions that enhance ambiance and highlight architectural features.
+                    </p>
+                </div>
+                <div class="highlight-card animate-on-scroll">
+                    <div class="highlight-icon">
+                        <i class="fas fa-ruler-combined"></i>
                     </div>
-                    <p class="testimonial-text">
-                        "Professional approach and creative solutions. They understand Indian aesthetics perfectly while
-                        keeping up with modern trends."
+                    <h3 class="highlight-title">Space Planning</h3>
+                    <p class="highlight-description">
+                        Optimize your space layout for maximum functionality while maintaining aesthetic appeal.
                     </p>
                 </div>
             </div>
         </div>
     </section>
+
+
+
+
 
     <!-- Contact Section -->
-    <section id="contact" class="section-darker">
-        <div class="container">
-            <div class="text-center mb-16 animate-on-scroll">
-                <h2 class="section-title">Get Your Free Consultation</h2>
-                <p class="section-subtitle">
-                    Ready to transform your space? Contact us today for a professional consultation
+    <section id="contact" class="py-16 bg-black text-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold mb-4 text-red-500">Visit Our Showroom</h2>
+                <p class="text-gray-300 max-w-2xl mx-auto">
+                    Ready to transform your space? Visit Luxury Interior for a free consultation
                 </p>
             </div>
-            <div class="contact-grid">
-                <div class="contact-form-container animate-on-scroll">
-                    <form class="contact-form" method="post" action="#" onsubmit="handleFormSubmit(event)">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label class="form-label">First Name</label>
-                                <input required name="first_name" type="text" class="form-input"
-                                    placeholder="Enter your first name">
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Contact Info -->
+                <div class="bg-black rounded-2xl p-8 border border-red-600">
+                    <h3 class="text-2xl font-bold mb-6 text-red-500">Get in Touch</h3>
+                    <div class="space-y-6">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-red-600/20 rounded-full flex items-center justify-center">
+                                <i class="fas fa-map-marker-alt text-red-500"></i>
                             </div>
-                            <div class="form-group">
-                                <label class="form-label">Last Name</label>
-                                <input required name="last_name" type="text" class="form-input"
-                                    placeholder="Enter your last name">
+                            <div>
+                                <h4 class="font-semibold text-white">Address</h4>
+                                <p class="text-gray-300">
+                                    Luxury Interior, Near Mango Market,<br />
+                                    Minakhi Nagar Main Road,<br />
+                                    Berhampur - 760002
+                                </p>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label class="form-label">Email</label>
-                            <input name="email" type="email" class="form-input" placeholder="Enter your email">
+
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-red-600/20 rounded-full flex items-center justify-center">
+                                <i class="fas fa-phone text-red-500"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-white">Phone</h4>
+                                <p class="text-gray-300">+91-8249098987<br />+91-9040101254</p>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label class="form-label">Phone</label>
-                            <input required name="phone" type="tel" class="form-input"
-                                placeholder="Enter your phone number">
+
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-red-600/20 rounded-full flex items-center justify-center">
+                                <i class="fas fa-envelope text-red-500"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-white">Email</h4>
+                                <p class="text-gray-300">luxuryinterior703@gmail.com</p>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label class="form-label">Project Type</label>
-                            <select name="project_type" class="form-input">
-                                <option value="">Select a service</option>
-                                <option value="complete">Complete Interior Design</option>
-                                <option value="makeover">Room Makeover</option>
-                                <option value="furniture">Custom Furniture</option>
-                                <option value="consultation">Consultation Only</option>
-                            </select>
+
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-red-600/20 rounded-full flex items-center justify-center">
+                                <i class="fas fa-clock text-red-500"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-white">Working Hours</h4>
+                                <p class="text-gray-300">
+                                    Mon - Sat: 9:00 AM - 7:00 PM<br />Sunday: 10:00 AM - 5:00 PM
+                                </p>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label class="form-label">Message</label>
-                            <textarea name="message" rows="4" class="form-input"
-                                placeholder="Tell us about your project..."></textarea>
+
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-red-600/20 rounded-full flex items-center justify-center">
+                                <i class="fas fa-file-invoice text-red-500"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-white">GST No.</h4>
+                                <p class="text-gray-300">21APMPM9427J1ZK</p>
+                            </div>
                         </div>
-                        <button type="submit" class="btn-primary w-full">Send Message</button>
-                    </form>
+                    </div>
                 </div>
-                <div class="contact-info animate-on-scroll">
-                    <h3 class="contact-info-title">Contact Information</h3>
-                    <div class="contact-info-list">
-                        <div class="contact-info-item">
-                            <div class="contact-info-icon">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div class="contact-info-content">
-                                <p class="contact-info-label">Address</p>
-                                <p class="contact-info-text">Luxury Interior, Near Mango Market,<br>Minakhi Nagar Main
-                                    Road,<br>Berhampur - 760002</p>
-                            </div>
-                        </div>
-                        <div class="contact-info-item">
-                            <div class="contact-info-icon">
-                                <i class="fas fa-phone"></i>
-                            </div>
-                            <div class="contact-info-content">
-                                <p class="contact-info-label">Contact</p>
-                                <p class="contact-info-text">+91-8249098987<br>+91-9040101254</p>
-                            </div>
-                        </div>
-                        <div class="contact-info-item">
-                            <div class="contact-info-icon">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div class="contact-info-content">
-                                <p class="contact-info-label">Email</p>
-                                <p class="contact-info-text">luxuryinterior703@gmail.com</p>
-                            </div>
-                        </div>
-                        <div class="contact-info-item">
-                            <div class="contact-info-icon">
-                                <i class="fas fa-globe"></i>
-                            </div>
-                            <div class="contact-info-content">
-                                <p class="contact-info-label">Website</p>
-                                <p class="contact-info-text">www.luxuryinterior.co.in</p>
-                            </div>
-                        </div>
-                        <div class="contact-info-item">
-                            <div class="contact-info-icon">
-                                <i class="fas fa-file-invoice"></i>
-                            </div>
-                            <div class="contact-info-content">
-                                <p class="contact-info-label">GST No.</p>
-                                <p class="contact-info-text">21APMPM9427J1ZK</p>
-                            </div>
-                        </div>
+
+                <!-- Map & Buttons -->
+                <div class="bg-black rounded-2xl p-8 border border-red-600">
+                    <h3 class="text-2xl font-bold text-red-500 mb-6">Our Location</h3>
+                    <div class="h-64 w-full rounded-xl overflow-hidden mb-6">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3939.086190671579!2d84.77910521914457!3d19.301878809267524!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a3d5aa85025998f%3A0x1f2a20d3642d9ae2!2sLuxury%20Interior!5e0!3m2!1sen!2sin!4v1751954158870!5m2!1sen!2sin"
+                            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+
+                    <div class="flex flex-col md:flex-row md:space-x-4 space-y-4 md:space-y-0">
+                        <a href="https://maps.app.goo.gl/8Yb8tf3AUywewR5X8" target="_blank" class="flex-1">
+                            <button
+                                class="w-full bg-red-600 text-white py-3 rounded-xl font-semibold hover:bg-red-700 transition-colors">
+                                Get Directions
+                            </button>
+                        </a>
+                        <a href="tel:+918249098987" class="flex-1">
+                            <button
+                                class="w-full border-2 border-red-600 text-red-600 py-3 rounded-xl font-semibold hover:bg-red-600 hover:text-white transition-colors">
+                                Call Store
+                            </button>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
+
+
     <!-- Footer -->
-    <footer class="footer">
+    <footer class="bg-gray-900 border-t border-red-600/20 py-16">
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-main">
-                    <h3 class="footer-title">Luxury Interior</h3>
-                    <p class="footer-description">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                <div>
+                    <h3 class="text-2xl font-bold text-gradient mb-6">Luxury Interior</h3>
+                    <p class="text-gray-300 mb-6 max-width-md">
                         Creating beautiful, functional spaces that blend traditional Indian elements with modern design.
                         We work with the highest level of professionalism to transform your vision into reality.
                     </p>
-                    <div class="social-links ">
-                        <a href="#" class="social-link">
-                            <i class="fab fa-facebook-f"></i>
+                    <div class="flex space-x-4">
+                        <a href="#"
+                            class="w-10 h-10 bg-gradient-to-r from-red-600 to-red-400 rounded-full flex items-center justify-center hover:scale-110 transition-transform">
+                            <i class="fab fa-facebook-f text-white"></i>
                         </a>
-                        <a href="#" class="social-link">
-                            <i class="fab fa-instagram"></i>
+                        <a href="#"
+                            class="w-10 h-10 bg-gradient-to-r from-red-600 to-red-400 rounded-full flex items-center justify-center hover:scale-110 transition-transform">
+                            <i class="fab fa-instagram text-white"></i>
                         </a>
-                        <a href="#" class="social-link">
-                            <i class="fab fa-pinterest"></i>
-                        </a>
-                        <a href="#" class="social-link">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
+
                     </div>
                 </div>
-                <div class="footer-links">
-                    <h4 class="footer-section-title">Quick Links</h4>
-                    <ul class="footer-link-list">
-                        <li><a href="#home" class="footer-link">Home</a></li>
-                        <li><a href="#services" class="footer-link">Services</a></li>
-                        <li><a href="#inspiration" class="footer-link">Inspiration</a></li>
-                        <li><a href="#portfolio" class="footer-link">Portfolio</a></li>
-                        <li><a href="#about" class="footer-link">About</a></li>
-                        <li><a href="#contact" class="footer-link">Contact</a></li>
+                <div>
+                    <h4 class="text-lg font-semibold text-red-600 mb-6">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#home" class="text-gray-300 hover:text-red-600 transition-colors">Home</a></li>
+                        <li><a href="#highlights" class="text-gray-300 hover:text-red-600 transition-colors">Why Choose
+                                Us</a></li>
+                        <li><a href="#services" class="text-gray-300 hover:text-red-600 transition-colors">Services</a>
+                        </li>
+                        <li><a href="#inspiration"
+                                class="text-gray-300 hover:text-red-600 transition-colors">Inspiration</a></li>
+                        <li><a href="#portfolio"
+                                class="text-gray-300 hover:text-red-600 transition-colors">Portfolio</a></li>
+                        <li><a href="#about" class="text-gray-300 hover:text-red-600 transition-colors">About</a></li>
+                        <li><a href="#contact" class="text-gray-300 hover:text-red-600 transition-colors">Contact</a>
+                        </li>
                     </ul>
                 </div>
-                <div class="footer-contact">
-                    <h4 class="footer-section-title">Contact Info</h4>
-                    <ul class="footer-contact-list">
-                        <li class="footer-contact-item">
-                            <i class="fas fa-map-marker-alt"></i>
+                <div>
+                    <h4 class="text-lg font-semibold text-red-600 mb-6">Contact Info</h4>
+                    <ul class="space-y-3">
+                        <li class="flex items-start text-gray-300 text-sm">
+                            <i class="fas fa-map-marker-alt text-red-600 mr-3 mt-1"></i>
                             <span>Luxury Interior, Near Mango Market, Minakhi Nagar Main Road, Berhampur - 760002</span>
                         </li>
-                        <li class="footer-contact-item">
-                            <i class="fas fa-phone"></i>
+                        <li class="flex items-center text-gray-300 text-sm">
+                            <i class="fas fa-phone text-red-600 mr-3"></i>
                             <span>+91-8249098987 / +91-9040101254</span>
                         </li>
-                        <li class="footer-contact-item">
-                            <i class="fas fa-envelope"></i>
+                        <li class="flex items-center text-gray-300 text-sm">
+                            <i class="fas fa-envelope text-red-600 mr-3"></i>
                             <span>luxuryinterior703@gmail.com</span>
                         </li>
-                        <li class="footer-contact-item">
-                            <i class="fas fa-globe"></i>
+                        <li class="flex items-center text-gray-300 text-sm">
+                            <i class="fas fa-globe text-red-600 mr-3"></i>
                             <span>www.luxuryinterior.co.in</span>
                         </li>
-                        <li class="footer-contact-item">
-                            <i class="fas fa-file-invoice"></i>
+                        <li class="flex items-center text-gray-300 text-sm">
+                            <i class="fas fa-file-invoice text-red-600 mr-3"></i>
                             <span>GST: 21APMPM9427J1ZK</span>
                         </li>
                     </ul>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Luxury Interior. All rights reserved. | Designed with excellence for Indian homes.</p>
+            <div class="border-t border-red-600/20 pt-8 text-center">
+                <p class="text-gray-400">&copy; 2025 Luxury Interior. All rights reserved. | Designed with excellence
+                    for Indian homes.</p>
             </div>
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function () {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function () {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Hero slider
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.hero-slide');
+        const indicators = document.querySelectorAll('.slide-indicator');
+        const totalSlides = slides.length;
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === index);
+            });
+            indicators.forEach((indicator, i) => {
+                indicator.classList.toggle('active', i === index);
+            });
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            showSlide(currentSlide);
+        }
+
+        // Auto-advance slides
+        setInterval(nextSlide, 5000);
+
+        // Indicator click handlers
+        indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => {
+                currentSlide = index;
+                showSlide(currentSlide);
+            });
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function (entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form submission handler
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            alert('Thank you for your message! We will contact you soon.');
+            event.target.reset();
+        }
+    </script>
 </body>
 
 </html>
