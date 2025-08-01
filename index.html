@@ -39,6 +39,30 @@
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
     <style>
+
+          /* Floating WhatsApp Button */
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
         /* Reset and Base Styles */
         * {
             margin: 0;
@@ -678,7 +702,16 @@
     </style>
 </head>
 
-<body class="text-white overflow-x-hidden">
+    <a href="https://wa.me/919437125487?text=Hi, I would like to get a quote for Luxury Interior"
+    class="floating-whatsapp bg-green-500 hover:bg-green-600 z-[999] text-white p-4 rounded-full shadow-lg transition-all duration-300">
+    <i class="fab fa-whatsapp text-2xl"></i>
+</a>
+
+<body class="text-white overflow-x-hidden relative">
+
+
+
+
     <!-- Navigation -->
     <nav class="fixed w-full top-0 z-50 transition-all duration-300" id="navbar">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -717,6 +750,8 @@
             </div>
         </div>
     </nav>
+
+
 
     <!-- Hero Section -->
     <section id="home" class="relative w-full h-[95vh] overflow-hidden">
@@ -916,7 +951,7 @@
                         class="w-full h-64 object-cover rounded-lg mb-4">
                     <h3 class="highlight-title">Traditional Living Space</h3>
                     <p class="highlight-description">Contemporary design with Indian cultural elements</p>
-                    <a href="" class="btn-secondary mt-4">View Details</a>
+                    <a href="badroomshowcase.html" class="btn-secondary mt-4">View Details</a>
                 </div>
 
                 <div class="highlight-card animate-on-scroll">
@@ -1201,7 +1236,7 @@
                         </li>
                         <li class="flex items-center text-gray-300 text-sm">
                             <i class="fas fa-phone text-red-600 mr-3"></i>
-                            <span>+91-8249098987 / +91-9040101254</span>
+                            <span>+91-8249098987 / +91-9437125487</span>
                         </li>
                         <li class="flex items-center text-gray-300 text-sm">
                             <i class="fas fa-envelope text-red-600 mr-3"></i>
